@@ -140,7 +140,7 @@ func rewriteArgs(in []string) []string {
 		}
 
 		args = append([]string{"/bin/bash", "-c"},
-			fmt.Sprintf("%s && su plex -s /bin/bash -c %s",
+			fmt.Sprintf("%s && chown -R plex:plex /transcode && su plex -s /bin/bash -c %s",
 				strings.Join(args, " && "),
 				shellescape.Quote(strings.Join(escaped_in, " "))))
 	} else {
